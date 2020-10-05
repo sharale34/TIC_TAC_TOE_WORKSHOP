@@ -26,7 +26,10 @@ public class TicTacToeGame {
 		showBoard(board);
 		getUserMove(board);
 		makeMove(board, userLetter);
+<<<<<<< HEAD
 		int toss = tossToWhoPlayFirst();
+=======
+>>>>>>> 86c5e0ec30c6cc8fd4962b2f1784f3dd5e0a6567
 	}
 
 	// Create Board and Assign Empty Spaces
@@ -75,7 +78,11 @@ public class TicTacToeGame {
 	public static boolean isSpaceFree(char[] board, int position) {
 		return board[position] == ' ';
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 86c5e0ec30c6cc8fd4962b2f1784f3dd5e0a6567
 	// Make Move on Board
 	private static void makeMove(char[] board, char Choice) {
 		boolean empty = false;
@@ -92,10 +99,13 @@ public class TicTacToeGame {
 		}
 		showBoard(board);
 	}
+<<<<<<< HEAD
 
 	// Toss of Head & Tail. Head - User, Tail - Computer
 	private static int tossToWhoPlayFirst() {
 		int gameToss = (int) (Math.floor(Math.random() * 10) % 2);
 		return gameToss;
 	}
+=======
+>>>>>>> 86c5e0ec30c6cc8fd4962b2f1784f3dd5e0a6567
 }
