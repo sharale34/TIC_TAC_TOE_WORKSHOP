@@ -23,7 +23,7 @@ public class TicTacToeGame {
 		System.out.println("The Computer Letter is :" + computer);
 		showBoard(board);
 		getUserMove(board);
-		showBoard(board);
+		makeMove(board, userLetter);
 	}
 
 	// Create Board and Assign Empty Spaces
@@ -71,5 +71,22 @@ public class TicTacToeGame {
 
 	public static boolean isSpaceFree(char[] board, int position) {
 		return board[position] == ' ';
+	}
+	
+	// Make Move on Board
+	private static void makeMove(char[] board, char Choice) {
+		boolean empty = false;
+		if (Choice == userLetter) {
+			int position = getUserMove(board);
+			board[position] = Choice;
+		} else {
+			do {
+				int position = (int) (Math.floor((Math.random() * 10) % 9) + 1);
+				empty = isSpaceFree(board, position);
+				if (empty)
+					board[position] = Choice;
+			} while (empty == false);
+		}
+		showBoard(board);
 	}
 }
