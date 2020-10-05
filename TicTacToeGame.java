@@ -19,7 +19,8 @@ public class TicTacToeGame {
 			computer = 'O';
 		else
 			computer = 'X';
-		System.out.println("The Computer Letter is :"+computer);
+		System.out.println("The Computer Letter is :" + computer);
+		showBoard(board);
 	}
 
 	// Create Board and Assign Empty Spaces
@@ -36,5 +37,14 @@ public class TicTacToeGame {
 		System.out.println("Choose Your User Letter X or O");
 		char userLetter = sc.next().toUpperCase().charAt(0);
 		return userLetter;
+	}
+
+	// Display the Board
+	private static void showBoard(char[] board) {
+		System.out.println("| " + board[1] + " | " + board[2] + " | " + board[3] + " |");
+		System.out.println("|-----------|");
+		System.out.println("| " + board[4] + " | " + board[5] + " | " + board[6] + " |");
+		System.out.println("|-----------|");
+		System.out.println("| " + board[7] + " | " + board[8] + " | " + board[9] + " |");
 	}
 }
