@@ -220,19 +220,37 @@ public class TicTacToeGame {
 		return position;
 	}
 
-	public static void main(String[] args) {
-		System.out.println("Welcome to Tic-Tac-Toe Game");
-		board = createBoard();
-		userLetter = chooseUserLetter();
-
-		// Assigning Letter to Computer
-		if (userLetter == 'X')
-			computer = 'O';
-		else
-			computer = 'X';
-		System.out.println("The Computer Letter is :" + computer);
-		int toss = tossToWhoPlayFirst();
-		getWhoPlaysFirst(toss);
+	// User choice to Start the game
+	public static boolean askIfPlayerWantsToRestart() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Do you want to play 'Y or N'");
+		char answer = sc.next().toUpperCase().charAt(0);
+		boolean restart = false;
+		if (answer == 'Y') {
+			restart = true;
+		} else if (answer == 'N') {
+			restart = false;
+			System.out.println("Thank You!");
+		}
+		return restart;
 	}
 
+	public static void main(String[] args) {
+		System.out.println("Welcome to Tic-Tac-Toe Game");
+		boolean restart = askIfPlayerWantsToRestart();
+		while (restart!= false) {
+			board = createBoard();
+			userLetter = chooseUserLetter();
+
+			// Assigning Letter to Computer
+			if (userLetter == 'X')
+				computer = 'O';
+			else
+				computer = 'X';
+			System.out.println("The Computer Letter is :" + computer);
+			int toss = tossToWhoPlayFirst();
+			getWhoPlaysFirst(toss);
+		}
+       
+	}
 }
