@@ -205,6 +205,16 @@ public class TicTacToeGame {
 				position = 7;
 			} else if (board[9] == ' ') {
 				position = 9;
+			} else if (board[5] == ' ') {
+				position = 5;
+			} else if (board[2] == ' ') {
+				position = 2;
+			} else if (board[4] == ' ') {
+				position = 4;
+			} else if (board[6] == ' ') {
+				position = 6;
+			} else if (board[8] == ' ') {
+				position = 8;
 			}
 		}
 		return position;
