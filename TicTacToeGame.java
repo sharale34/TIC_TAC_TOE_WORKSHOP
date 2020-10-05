@@ -197,6 +197,14 @@ public class TicTacToeGame {
 					|| (board[3] == board[7] && board[3] == userLetter)
 					|| (board[6] == board[4] && board[6] == userLetter)) && board[5] == ' ') {
 				position = 5;
+			} else if (board[1] == ' ') {
+				position = 1;
+			} else if (board[3] == ' ') {
+				position = 3;
+			} else if (board[7] == ' ') {
+				position = 7;
+			} else if (board[9] == ' ') {
+				position = 9;
 			}
 		}
 		return position;
