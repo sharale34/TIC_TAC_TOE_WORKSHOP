@@ -1,5 +1,6 @@
 package com.bridgelabz.tictactoe;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TicTacToeGame {
@@ -20,6 +21,8 @@ public class TicTacToeGame {
 		else
 			computer = 'X';
 		System.out.println("The Computer Letter is :" + computer);
+		showBoard(board);
+		getUserMove(board);
 		showBoard(board);
 	}
 
@@ -46,5 +49,27 @@ public class TicTacToeGame {
 		System.out.println("| " + board[4] + " | " + board[5] + " | " + board[6] + " |");
 		System.out.println("|-----------|");
 		System.out.println("| " + board[7] + " | " + board[8] + " | " + board[9] + " |");
+	}
+
+	// Selection of location by Player
+	private static int getUserMove(char[] board) {
+		Scanner sc = new Scanner(System.in);
+		boolean available = false;
+		int position = 0;
+		Integer[] validCells = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		do {
+			System.out.println("Choose a Desired Location on Board from 1 to 9 :");
+			position = sc.nextInt();
+			if (isSpaceFree(board, position) && Arrays.asList(validCells).contains(position))
+				available = true;
+			else
+				System.out.println("Invalid position. Choose another empty position");
+		} while (available == false);
+		return position;
+
+	}
+
+	public static boolean isSpaceFree(char[] board, int position) {
+		return board[position] == ' ';
 	}
 }
