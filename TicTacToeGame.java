@@ -6,31 +6,11 @@ import java.util.Scanner;
 public class TicTacToeGame {
 	private final static int TAIL = 0;
 	private final static int HEAD = 1;
+
 	// Variables
 	private static char computer;
 	private static char[] board;
 	private static char userLetter;
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Welcome To Tic-Tac-Toe Game");
-		board = createBoard();
-		userLetter = chooseUserLetter();
-
-		// Assigning Letter to Computer
-		if (userLetter == 'X')
-			computer = 'O';
-		else
-			computer = 'X';
-		System.out.println("The Computer Letter is :" + computer);
-		showBoard(board);
-		getUserMove(board);
-		makeMove(board, userLetter);
-<<<<<<< HEAD
-		int toss = tossToWhoPlayFirst();
-=======
->>>>>>> 86c5e0ec30c6cc8fd4962b2f1784f3dd5e0a6567
-	}
 
 	// Create Board and Assign Empty Spaces
 	private static char[] createBoard() {
@@ -78,11 +58,7 @@ public class TicTacToeGame {
 	public static boolean isSpaceFree(char[] board, int position) {
 		return board[position] == ' ';
 	}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 86c5e0ec30c6cc8fd4962b2f1784f3dd5e0a6567
 	// Make Move on Board
 	private static void makeMove(char[] board, char Choice) {
 		boolean empty = false;
@@ -99,13 +75,77 @@ public class TicTacToeGame {
 		}
 		showBoard(board);
 	}
-<<<<<<< HEAD
 
 	// Toss of Head & Tail. Head - User, Tail - Computer
 	private static int tossToWhoPlayFirst() {
 		int gameToss = (int) (Math.floor(Math.random() * 10) % 2);
 		return gameToss;
 	}
-=======
->>>>>>> 86c5e0ec30c6cc8fd4962b2f1784f3dd5e0a6567
+
+	// Choose The First Player
+	private static void getWhoPlaysFirst(int gameToss) {
+		if (gameToss == HEAD) {
+			System.out.println("User Plays First");
+			isWinner(gameToss);
+		}
+		if (gameToss == TAIL) {
+			System.out.println("Computer Plays First");
+			isWinner(gameToss);
+		}
+	}
+
+	// Check who is Winner or game is Tie
+	private static void isWinner(int gameToss) {
+
+		if (gameToss == HEAD) {
+			makeMove(board, userLetter);
+		} else if (gameToss == TAIL) {
+			makeMove(board, computer);
+		}
+
+		if ((board[1] == board[2] && board[2] == board[3] && board[1] != ' ')
+				|| (board[4] == board[5] && board[5] == board[6] && board[6] != ' ')
+				|| (board[7] == board[8] && board[8] == board[9] && board[9] != ' ')
+				|| (board[1] == board[4] && board[4] == board[7] && board[7] != ' ')
+				|| (board[2] == board[5] && board[5] == board[8] && board[8] != ' ')
+				|| (board[3] == board[6] && board[6] == board[9] && board[9] != ' ')
+				|| (board[1] == board[5] && board[5] == board[9] && board[9] != ' ')
+				|| (board[3] == board[5] && board[5] == board[7] && board[7] != ' ')) {
+			if (gameToss == HEAD)
+				System.out.println("Player Won The Game.");
+			if (gameToss == TAIL)
+				System.out.println("Computer Won The Game.");
+			System.exit(0);
+		} else {
+			if (board[1] != ' ' && board[2] != ' ' && board[3] != ' ' && board[4] != ' ' && board[5] != ' '
+					&& board[6] != ' ' && board[7] != ' ' && board[8] != ' ' && board[9] != ' ') {
+				System.out.println("Game is Tie");
+				System.exit(0);
+			} else {
+				if (gameToss == HEAD) {
+					gameToss--;
+					isWinner(gameToss);
+				} else if (gameToss == TAIL) {
+					gameToss++;
+					isWinner(gameToss);
+				}
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Welcome to Tic-Tac-Toe Game");
+		board = createBoard();
+		userLetter = chooseUserLetter();
+
+		// Assigning Letter to Computer
+		if (userLetter == 'X')
+			computer = 'O';
+		else
+			computer = 'X';
+		System.out.println("The Computer Letter is :"+computer);
+		int toss = tossToWhoPlayFirst();
+		getWhoPlaysFirst(toss);
+	}
+
 }
